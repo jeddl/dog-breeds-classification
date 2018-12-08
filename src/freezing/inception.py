@@ -1,12 +1,12 @@
 import tensorflow as tf
 
 from src.common import consts
-import freeze
+import src.freezing.freeze
 from src.common import paths
 
 
 def inception_model():
-    tensors = freeze.unfreeze_into_current_graph(paths.IMAGENET_GRAPH_DEF,
+    tensors = src.freezing.freeze.unfreeze_into_current_graph(paths.IMAGENET_GRAPH_DEF,
                                                  tensor_names=[
                                                      consts.INCEPTION_INPUT_TENSOR,
                                                      consts.INCEPTION_OUTPUT_TENSOR])

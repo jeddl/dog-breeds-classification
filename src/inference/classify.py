@@ -1,6 +1,7 @@
 import os
 import sys
-import urllib2
+#import urllib2
+from urllib.request import urlopen
 
 import numpy as np
 import pandas as pd
@@ -38,7 +39,7 @@ def classify(resource_type, path):
         response = urllib2.urlopen(path)
         img_raw = response.read()
     else:
-        with open(path, 'r') as f:
+        with open(path, 'rb') as f:
             img_raw = f.read()
 
     return infer(consts.CURRENT_MODEL_NAME, img_raw)
